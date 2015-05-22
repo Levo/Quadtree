@@ -1,0 +1,52 @@
+<html>
+<head>
+	<script type="text/javascript" src="quadtree.js"></script>
+	<script type="text/javascript" src="rectangle.js"></script>
+	<script type="text/javascript" src="draw.js"></script>
+	<script type="text/javascript" src="vector.js"></script>
+
+</head>
+
+<body>
+
+    <canvas id="myCanvas" width="600" height="600" style="background-color:FFFFF; "></canvas>
+	<script>
+		var canvas = document.getElementById("myCanvas");
+		var context = canvas.getContext('2d');
+
+		var myTree = new Quadtree(0, new rectangle(0,0,600,600));
+
+		var allObjects = [];
+		function populate(){
+			for (var i = 0; i < 100; i++) {
+				var x = Math.floor((Math.random() * 570) + 1);
+				var y = Math.floor((Math.random() * 570) + 1);
+				var width = 10;
+				var height = width;
+
+				var currentRectangle = new rectangle(x,y,width,height);		
+				allObjects[i] = currentRectangle;		
+			};
+		}
+
+		populate();
+
+		function animate(){
+            context.clearRect(0, 0, canvas.width, canvas.height);
+
+            myTree.clear();
+            for (var i = 0; i < allObjects.length; i++) {
+				myTree.insert(allObjects[i]);
+            };
+
+            drawObjects(myTree);
+            drawBounds(myTree);
+            window.requestAnimationFrame(animate);
+		}
+
+		animate();
+
+	</script>
+</body>
+
+</html>
