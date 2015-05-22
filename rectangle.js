@@ -3,13 +3,12 @@ function rectangle(x,y,width,height){
 	this.y = y || 0;
 	this.width = width || 0;
 	this.height = height || 0;
-	this.drawColor = "blue";
+	this.drawColor = "#8e44ad";
 	this.position = new vector(x,y);
 	this.randX =  Math.floor((Math.random() * 3) + 1);
 	this.randY =  Math.floor((Math.random() * 3) + 1);
 	this.velocity = new vector(this.randX,this.randY);
 	this.acceleration = new vector(0,0);
-	this.spread = 90;	
 }
 
 rectangle.prototype.getX = function(){
@@ -35,7 +34,7 @@ rectangle.prototype.drawBounds = function(){
 	context.lineTo(this.x + this.width, this.y + this.height);
 	context.lineTo(this.x, this.y + this.height);
 	context.stroke();
-	context.strokeStyle = "black";
+	context.strokeStyle = "#2c3e50";
 }
 
 rectangle.prototype.drawRect = function(){

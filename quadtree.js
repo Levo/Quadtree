@@ -1,6 +1,6 @@
 function Quadtree(pLevel, pBounds){
 	this.MAX_OBJECTS = 10;
-	this.MAX_LEVELS = 4;
+	this.MAX_LEVELS = 10;
 
 	this.level = pLevel || 0;
 	this.objects = [];
